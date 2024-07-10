@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:32:54 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/05/31 17:00:42 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:40:15 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strdup_wnls(const char *str)
 		return (ft_strdup(""));
 	while (str[j] == '\0' || str[j] == '\n' || str[j] == ' ')
 		j--;
-	res = malloc(sizeof(char) * (j + 1));
+	res = malloc(sizeof(char) * (j + 2));
 	if (!res)
 		return (NULL);
 	i = 0;

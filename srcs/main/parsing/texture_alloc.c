@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:12:21 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/05/31 16:41:27 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/06/07 03:27:13 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ static int	add_ea_texture(char *buff, t_cub3d *map)
 	free(path);
 	return (1);
 }
-
 
 int	add_text(char *buff, t_cub3d *map)
 {

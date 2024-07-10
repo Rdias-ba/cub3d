@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:50:01 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/03 19:45:14 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:15:20 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static double	get_player_orientation(char c)
 	else if (c == 'W')
 		return (PI);
 	else if (c == 'S')
-		return (PI / 2);
-	return (PI * 1.5);
+		return (PI_2);
+	return (PI_3_2);
 }
 
 void	get_player_pos(t_cub3d *map)

@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:08:09 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/03 17:04:51 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:57:25 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,27 @@ int	free_texture(t_cub3d *map)
 	free(map->so_texture);
 	free(map->ea_texture);
 	free(map->we_texture);
+	return (0);
+}
+
+int	free_all(t_cub3d *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->map_height)
+	{
+		free(map->map[i]);
+		i++;
+	}
+	free(map->frame);
+	free(map->map);
+	free_texture(map);
+	if (map->mlx_img.img)
+		mlx_destroy_image(map->mlx, map->mlx_img.img);
+	mlx_destroy_window(map->mlx, map->mlx_win);
+	mlx_destroy_display(map->mlx);
+	free(map->mlx);
+	exit(EXIT_SUCCESS);
 	return (0);
 }

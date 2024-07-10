@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:23:15 by rdias-ba          #+#    #+#             */
-/*   Updated: 2022/11/24 23:22:56 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/06/07 03:13:17 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	{
 		j = 0;
 		while (i + j < len && big[i + j] == little[j])
-		{	
+		{
 			j++;
 			if (j == ft_strlen(little))
 				return ((char *)big + i);

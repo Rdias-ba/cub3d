@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:53:50 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/05/31 17:48:23 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/06/13 13:10:59 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int	main(int ac, char **av)
 		free(map.mlx);
 		return (EXIT_FAILURE);
 	}
+	game(&map);
 	return (0);
 }

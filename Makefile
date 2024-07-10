@@ -6,7 +6,7 @@
 #    By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/23 13:50:03 by rdias-ba          #+#    #+#              #
-#    Updated: 2024/06/03 19:48:51 by rdias-ba         ###   ########.fr        #
+#    Updated: 2024/06/19 13:58:31 by rdias-ba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ HEADERS			=	cub3d.h
 # Files
 
 FILES_SRC		=	main.c
-FILES_UTILS		=	error.c map_utils.c textures_init.c string_utils.c mlx_utils.c free_utils.c
+FILES_UTILS		=	error.c map_utils.c textures_init.c string_utils.c mlx_utils.c free_utils.c math_utils.c movements.c is_blocking_utils.c dda_utils.c
 FILES_PARSING	=	parsing.c texture_alloc.c color_alloc.c map_rules.c player.c
+FILES_RENDERING	=	create_frame.c dda.c draw.c
 
 # Directories
 
@@ -33,7 +34,6 @@ DIR_BONUS		=	bonus/
 DIR_RENDERING	=	rendering/
 DIR_PARSING		=	parsing/
 DIR_EXTRA		=	bonus/
-DIR_RAYCASTING	=	raycasting/
 DIR_UTILS		=	utils/
 DIR_OBJS		=	objs/
 DIR_BONUS_OBJS	=	objs_bonus/
@@ -45,6 +45,7 @@ INCS			=	$(addprefix $(DIR_INC), $(HEADERS))
 SRCS			=	$(addprefix $(DIR_SRC)$(DIR_MAIN), $(FILES_SRC)) \
 					$(addprefix $(DIR_SRC)$(DIR_MAIN)$(DIR_UTILS), $(FILES_UTILS)) \
 					$(addprefix $(DIR_SRC)$(DIR_MAIN)$(DIR_PARSING), $(FILES_PARSING)) \
+					$(addprefix $(DIR_SRC)$(DIR_MAIN)$(DIR_RENDERING), $(FILES_RENDERING)) \
 
 OBJS			=	$(subst $(DIR_SRC), $(DIR_OBJS), $(SRCS:.c=.o))
 
@@ -81,8 +82,8 @@ UNDERLINE=\033[4m
 all: makemlx makelibft $(NAME)
 
 makemlx:
-	@$(MAKE) -C $(DIR_MLX) --quiet --no-print-directory 
-	
+	@$(MAKE) -C $(DIR_MLX) --quiet --no-print-directory
+
 makelibft:
 	@$(MAKE) -C $(DIR_FT) --no-print-directory
 
@@ -112,7 +113,7 @@ clean:
 	@$(RM) $(OBJS)
 	@$(RM) $(BONUS_OBJS)
 	@$(RM) $(DIR_OBJS)
-	@$(MAKE) clean -C $(DIR_FT) --no-print-directory 
+	@$(MAKE) clean -C $(DIR_FT) --no-print-directory
 	@$(MAKE) clean -C $(DIR_MLX) --no-print-directory
 	@echo "$(ERASE)$(BOLD)$(NAME)$(RESET)$(GREEN) objects deleted.$(RESET)";
 

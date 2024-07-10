@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:00:19 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/03 19:46:16 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:42:34 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ int	init_map_array(t_cub3d *map, int height, int width)
 {
 	int	i;
 
-	map->map = malloc(sizeof(char *) * height + 1);
+	map->map = malloc(sizeof(char *) * (height + 1));
 	if (!map->map)
 	{
 		free_texture(map);
 		return (print_error(ERR_MALLOC, 0));
 	}
-	map->map[height] = NULL;
+	map->map[height] = 0;
 	i = 0;
 	while (i < height)
 	{

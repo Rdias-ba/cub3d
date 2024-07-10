@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:58:37 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/03 19:40:39 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:31:29 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,25 @@
 # define WIDTH			1280
 # define CUBE_SIZE		64
 # define SPEED			10.0
+# define ROT_SPEED		0.06
+# define NB_RAYS 		640
+# define HALF_FOV 		30
+# define PROJ_DISTANCE	1108
 
-# define PI				3.14159265358979323846
+# define PI				3.141592 // 180°
+# define PI_2			1.570796 // 90°
+# define PI_3_2			4.712389 // 270°
+# define _2_PI			6.283184 //	360°
+# define DEG_RAD 		0.017453 // 1°
+# define ANGLE_INCR 	0.001636 // = 60° / 640
+
+# define LEFT_ARROW 	65361
+# define RIGHT_ARROW 	65363
+# define FORWARD 		119
+# define BACKWARD 		115
+# define LEFT 			97
+# define RIGHT 			100
+# define ESC 			65307
 
 typedef struct s_point
 {
@@ -60,6 +77,16 @@ enum e_pos
 	EAST,
 	WEST
 };
+
+typedef struct s_dda
+{
+	double	angle_sin;
+	double	angle_cos;
+	double	delta_x;
+	double	delta_y;
+	double	x;
+	double	y;
+}	t_dda;
 
 typedef struct s_mlx_data
 {
@@ -117,6 +144,13 @@ typedef struct s_cub3d
 	t_player	player;
 }	t_cub3d;
 
+/*************GAME**************/
+
+void			game(t_cub3d *map);
+void			create_frame(t_cub3d	*map);
+void			draw_slice(t_cub3d *map, t_frame frame, int index);
+void			dda(t_cub3d *map, double ray_ori, t_frame *frame);
+
 /************PARSING************/
 
 int				parsing(char *map_file, t_cub3d *map);
@@ -144,6 +178,22 @@ int				free_array(char ***array, int err);
 int				create_mlx_color(int t, int r, int g, int b);
 int				free_texture(t_cub3d *map);
 void			free_partial_array(char ***array, int last_alloc);
+int				free_all(t_cub3d *map);
 int				load_texture(t_text *texture, t_cub3d *map, char *path);
+double			correct_angle(double angle);
+void			move_forward(t_cub3d *map);
+void			move_backward(t_cub3d *map);
+void			move_right(t_cub3d *map);
+void			move_left(t_cub3d *map);
+int				is_blocking_down(t_cub3d *map, int new_x, int new_y);
+int				is_blocking_up(t_cub3d *map, int new_x, int new_y);
+int				is_blocking_right(t_cub3d *map, int new_x, int new_y);
+int				is_blocking_left(t_cub3d *map, int new_x, int new_y);
+int				coords_valid(t_cub3d *map, int x, int y);
+int				is_wall(t_cub3d *map, int x, int y);
+double			get_wall_y(t_dda utils, int up);
+void			fill_ver(t_frame *frame, t_cub3d *map, t_dda data, int hori);
+void			fill_hor(t_frame *frame, t_dda data, int up);
+int				get_texture_color(t_text *text, int x, int y);
 
 #endif
