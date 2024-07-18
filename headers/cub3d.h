@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:58:37 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/24 20:31:29 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:54:51 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 # define PI_3_2			4.712389 // 270°
 # define _2_PI			6.283184 //	360°
 # define DEG_RAD 		0.017453 // 1°
-# define ANGLE_INCR 	0.001636 // = 60° / 640
+# define ANGLE_INCR 	0.001636 // = 60°/nb_rays(640)
 
 # define LEFT_ARROW 	65361
 # define RIGHT_ARROW 	65363
@@ -192,7 +192,7 @@ int				is_blocking_left(t_cub3d *map, int new_x, int new_y);
 int				coords_valid(t_cub3d *map, int x, int y);
 int				is_wall(t_cub3d *map, int x, int y);
 double			get_wall_y(t_dda utils, int up);
-void			fill_ver(t_frame *frame, t_cub3d *map, t_dda data, int hori);
+void			fill_ver(t_frame *frame, t_cub3d *map, t_dda data, int right);
 void			fill_hor(t_frame *frame, t_dda data, int up);
 int				get_texture_color(t_text *text, int x, int y);
 

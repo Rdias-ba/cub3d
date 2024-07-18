@@ -6,11 +6,13 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:08:09 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/24 20:57:25 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/12 14:59:18 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+//free un array de complet
 
 int	free_array(char ***array, int err)
 {

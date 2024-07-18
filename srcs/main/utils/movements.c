@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 14:31:52 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/18 08:35:42 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/16 15:55:44 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ static int	is_valid_pos(t_cub3d *map, int new_x, int new_y)
 		return (1);
 	return (0);
 }
+
+/* fonctions de mouvement
+ * sin() composante y du déplacement
+ * cos() composante x du déplacement
+ * map->player.ori + PI / 2, orientation de la pov de 90° pour right et left
+ */
 
 void	move_forward(t_cub3d *map)
 {

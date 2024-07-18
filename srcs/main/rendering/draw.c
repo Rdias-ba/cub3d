@@ -6,13 +6,15 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:58:16 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/24 20:12:05 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:30:22 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//si les coordonnées sont dans l'image, applique le pixel de couleur
+/* si les coordonnées sont dans l'image, applique le pixel de couleur
+ * à l'addresse de destination
+ */
 
 static void	ft_mlx_pixel_put(t_mlx_data *data, int x, int y, int color)
 {
@@ -35,6 +37,12 @@ static t_text	*get_texture(t_cub3d *map, enum e_pos side)
 	else
 		return (map->we_texture);
 }
+
+/* dessine la texture du mur en fonction de son orientation
+ * et sa distance entre elle et le joueur
+ * x_offset et text_y sont nécessaire pour choisir le bon pixel dans l'image
+ * 1 == vertical, 0 == horizontal
+ */
 
 static void	draw_texture_col(t_cub3d *map, t_frame frame, int x, int offset)
 {
@@ -63,7 +71,6 @@ static void	draw_texture_col(t_cub3d *map, t_frame frame, int x, int offset)
 		y++;
 	}
 }
-
 
 //Dessine dans l'ordre le plafond, le mur et le sol
 

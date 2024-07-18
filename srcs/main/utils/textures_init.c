@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:11:34 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/05/31 16:59:53 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/12 14:27:26 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static int	ea_text_init(t_cub3d *map)
 	map->ea_texture->is_init = 0;
 	return (1);
 }
+
+// initialise les textures 
 
 int	text_init(t_cub3d *map)
 {

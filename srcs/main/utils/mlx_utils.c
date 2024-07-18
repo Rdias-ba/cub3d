@@ -6,11 +6,13 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:59:18 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/24 20:14:44 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/12 14:50:38 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// enregistre la texture et ses composantes
 
 int	load_texture(t_text *texture, t_cub3d *map, char *path)
 {
@@ -36,6 +38,8 @@ int	get_texture_color(t_text *text, int x, int y)
 	pixel_offset = y * text->line_length + x * (text->bits_per_pixel / 8);
 	return (*(int *)(text->addr + pixel_offset));
 }
+
+// modifie le format de couleurs pour mlx
 
 int	create_mlx_color(int t, int r, int g, int b)
 {

@@ -6,11 +6,13 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:53:50 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/13 13:10:59 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/12 14:22:17 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// initialisation de la fenêtre
 
 int	window_init(t_cub3d *map)
 {

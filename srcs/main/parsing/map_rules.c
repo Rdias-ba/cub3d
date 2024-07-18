@@ -6,11 +6,13 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:24:39 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/07 03:13:34 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:21:53 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// vérifie que tout à bien été enregistré
 
 int	is_text_valid(t_cub3d *map)
 {
@@ -21,6 +23,8 @@ int	is_text_valid(t_cub3d *map)
 		return (0);
 	return (1);
 }
+
+// vérifie qu'il y a un seul joueur dans la map
 
 int	check_one_player(char **map)
 {
@@ -59,6 +63,12 @@ static int	is_valid_pos(char **map, int i, int j)
 		return (0);
 	return (1);
 }
+
+/* vérifie la validité de la map:
+ * -pas de joueur n'y de vide en première casse
+ * -pas de vide autour du joueur
+ * -pas de vide autour d'un 0
+ */
 
 int	is_map_closed(char **map)
 {

@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 08:40:56 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/24 20:21:47 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:02:50 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	create_image(t_cub3d	*map)
 		i++;
 	}
 }
+
+// Appel du raycasting sur 640 frames en partant de la gauche de notre fov
 
 static void	raycasting(t_cub3d	*map)
 {
@@ -51,6 +53,8 @@ static void	raycasting(t_cub3d	*map)
 		ray_ori = correct_angle(ray_ori);
 	}
 }
+
+// Création de l'image et de ses composantes
 
 void	create_frame(t_cub3d	*map)
 {

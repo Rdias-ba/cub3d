@@ -6,14 +6,15 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:04:12 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/19 13:48:27 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:30:03 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// calcule la data pour le DDA vertical
-
+/* calcule la data pour le DDA vertical grace à la pente
+ * et au premier point d'intersection du rayon aux lignes verticales
+ */
 static t_dda	get_ver_data(t_dda data, t_cub3d *map, int right)
 {
 	double	tang;
@@ -52,7 +53,9 @@ static t_dda	get_hor_data(t_dda data, t_cub3d *map, int up)
 	return (data);
 }
 
-// localise le mur dans l'axe vertical avec rayon
+/* localise le mur dans l'axe vertical avec le rayon
+ * depuis les coordonnées de la première intersection verticale
+ */
 
 static void	ver_dda(t_dda data, t_cub3d *map, t_frame *frame, double angle)
 {
@@ -81,6 +84,7 @@ static void	ver_dda(t_dda data, t_cub3d *map, t_frame *frame, double angle)
 
 /* localise le mur dans l'axe horizontal avec rayon
  * et enregistre la distance entre le mur et le joueur
+ * depuis les coordonnées de la première intersection horizontale
  */
 
 static void	hori_dda(t_dda data, t_cub3d *map, t_frame *frame, double angle)
@@ -115,7 +119,7 @@ static void	hori_dda(t_dda data, t_cub3d *map, t_frame *frame, double angle)
 /*Utilisation de l'algorithme DDA (Digital Differential Analyzer)
  *pour trouver la distance entre le joueur et le prochain mur
  *en vérifient l'axe horizontal et vertical de la grille par où
- *passe le rayon */
+ *passe le rayon en corrigeant les effets de distortion*/
 
 void	dda(t_cub3d *map, double ray_ori, t_frame *frame)
 {

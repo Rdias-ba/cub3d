@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:00:19 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/24 20:42:34 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:12:14 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@ int	is_player_char(char c)
 	return (0);
 }
 
+// vérifie que les characters utiliser pour le mapping sont valides
+
 int	is_map_char(char c)
 {
 	if (c == ' ' || c == '0' || c == '1' || is_player_char(c))
 		return (1);
 	return (0);
 }
+
+// fonction pour indiquer que le read est sur la ligne de la map
 
 int	is_map_desc(char *buff)
 {
@@ -45,6 +49,8 @@ int	is_map_desc(char *buff)
 	return (1);
 }
 
+// initialise tout les attribut de t_cub3d
+
 int	map_init(t_cub3d *map)
 {
 	if (!text_init(map))
@@ -60,6 +66,8 @@ int	map_init(t_cub3d *map)
 	map->frame = 0;
 	return (1);
 }
+
+// initialise la carte en fonction de ses dimensions
 
 int	init_map_array(t_cub3d *map, int height, int width)
 {

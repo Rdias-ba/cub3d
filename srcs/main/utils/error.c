@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 15:20:38 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/05/24 15:42:49 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/12 14:22:05 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	print_error(char *str, int exit_status)
 	ft_putstr_fd(str, 2);
 	return (exit_status);
 }
+
+// vérifie si l'extension du fichier est .cub
 
 int	check_extension(char *str)
 {

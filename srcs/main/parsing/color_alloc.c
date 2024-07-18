@@ -6,11 +6,13 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 17:40:37 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/07 03:13:00 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/12 14:59:41 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// vérifie la couleurs
 
 static int	check_color(char *str)
 {
@@ -40,6 +42,8 @@ static int	check_color(char *str)
 	free(tmp);
 	return (color);
 }
+
+// split les couleurs en r,g,b et les return en format adapté
 
 static int	get_color(char *str)
 {
@@ -98,6 +102,8 @@ static int	add_ceiling_color(char *buff, t_cub3d *map)
 	map->ceiling_color = color;
 	return (1);
 }
+
+// parsing des couleurs
 
 int	add_color(char *buff, t_cub3d *map)
 {

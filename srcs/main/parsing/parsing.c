@@ -6,11 +6,13 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:36:05 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/07 00:01:39 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:23:36 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// enregistre la ligne de la map dans le buffer et rajoute un espace a la fin
 
 static int	fill_map_row(char *buff, t_cub3d *map, int row)
 {
@@ -34,6 +36,8 @@ static int	fill_map_row(char *buff, t_cub3d *map, int row)
 	map->map[row][i] = '\0';
 	return (1);
 }
+
+// enregistre la map dans le buffer
 
 static int	fill_map(char *map_file, t_cub3d *map)
 {
@@ -64,6 +68,8 @@ static int	fill_map(char *map_file, t_cub3d *map)
 	return (1);
 }
 
+// parse les textures, les couleurs et check la map pour les dimensions
+
 static int	parse_line(char *buff, t_cub3d *map)
 {
 	static int	width = 0;
@@ -92,6 +98,8 @@ static int	parse_line(char *buff, t_cub3d *map)
 	return (1);
 }
 
+// parse ligne par ligne le fichier .cub à l'aide de read et gnl
+
 static int	get_map(char *map_file, t_cub3d *map)
 {
 	int		fd;
@@ -117,6 +125,8 @@ static int	get_map(char *map_file, t_cub3d *map)
 		return (free_texture(map));
 	return (1);
 }
+
+// parse le contenu du fichier .cub
 
 int	parsing(char *map_file, t_cub3d *map)
 {

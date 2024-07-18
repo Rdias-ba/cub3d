@@ -6,11 +6,13 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:12:21 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/07 03:27:13 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/12 14:40:07 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// verifie et enregistre les texures en fonction de leur orientation
 
 static int	add_no_texture(char *buff, t_cub3d *map)
 {
@@ -103,6 +105,8 @@ static int	add_ea_texture(char *buff, t_cub3d *map)
 	free(path);
 	return (1);
 }
+
+// parsing des texture en fonction de l'orientation
 
 int	add_text(char *buff, t_cub3d *map)
 {

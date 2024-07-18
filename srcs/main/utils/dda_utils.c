@@ -6,7 +6,7 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:44:58 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/06/19 13:44:38 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:54:01 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void	fill_hor(t_frame *frame, t_dda data, int up)
  * définie par l'angle du rayon
  */
 
-void	fill_ver(t_frame *frame, t_cub3d *map, t_dda data, int hori)
+void	fill_ver(t_frame *frame, t_cub3d *map, t_dda data, int right)
 {
 	frame->distance = sqrt(pow(data.x - map->player.map_pos.x, 2) + \
 		pow(data.y - map->player.map_pos.y, 2));
 	frame->point.x = data.x;
 	frame->point.y = data.y;
 	frame->axis = 1;
-	if (hori)
+	if (right)
 		frame->wall_face = WEST;
 	else
 		frame->wall_face = EAST;
