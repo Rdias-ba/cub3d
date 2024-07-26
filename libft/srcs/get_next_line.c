@@ -6,55 +6,108 @@
 /*   By: rdias-ba <rdias-ba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 04:05:55 by rdias-ba          #+#    #+#             */
-/*   Updated: 2024/05/31 16:37:21 by rdias-ba         ###   ########.fr       */
+/*   Updated: 2024/07/26 21:20:15 by rdias-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_dup(char *str)
+// join and free
+char	*ft_free(char *buffer, char *buf)
+{
+	char	*temp;
+
+	temp = ft_strjoin(buffer, buf);
+	free(buffer);
+	return (temp);
+}
+
+// delete line find
+char	*ft_next(char *buffer)
 {
 	int		i;
-	char	*dup;
+	int		j;
+	char	*line;
 
 	i = 0;
-	while (str[i])
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	dup = malloc(sizeof(char) * i + 1);
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (str[i])
+	if (!buffer[i])
 	{
-		dup[i] = str[i];
+		free(buffer);
+		return (NULL);
+	}
+	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+	i++;
+	j = 0;
+	while (buffer[i])
+		line[j++] = buffer[i++];
+	free(buffer);
+	return (line);
+}
+
+// take line for return
+char	*ft_line(char *buffer)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	if (!buffer[i])
+		return (NULL);
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	line = ft_calloc(i + 2, sizeof(char));
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
+	{
+		line[i] = buffer[i];
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	if (buffer[i] && buffer[i] == '\n')
+		line[i++] = '\n';
+	return (line);
+}
+
+char	*read_file(int fd, char *res)
+{
+	char	*buffer;
+	int		byte_read;
+
+	if (!res)
+		res = ft_calloc(1, 1);
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	byte_read = 1;
+	while (byte_read > 0)
+	{
+		byte_read = read(fd, buffer, BUFFER_SIZE);
+		if (byte_read == -1)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[byte_read] = 0;
+		res = ft_free(res, buffer);
+		if (ft_strchr(buffer, '\n'))
+			break ;
+	}
+	free(buffer);
+	return (res);
 }
 
 char	*get_next_line(int fd)
 {
-	int		i;
-	int		ret;
-	char	c;
-	char	buff[7000000];
+	static char	*buffer;
+	char		*line;
 
-	i = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	ret = read(fd, &c, 1);
-	while (ret > 0)
-	{
-		buff[i++] = c;
-		if (c == '\n')
-			break ;
-		ret = read(fd, &c, 1);
-	}
-	if (ret <= 0 && i == 0)
+	buffer = read_file(fd, buffer);
+	if (!buffer)
 		return (NULL);
-	buff[i] = '\0';
-	return (ft_dup(buff));
+	line = ft_line(buffer);
+	buffer = ft_next(buffer);
+	return (line);
 }
 /*
 int	main(void)
